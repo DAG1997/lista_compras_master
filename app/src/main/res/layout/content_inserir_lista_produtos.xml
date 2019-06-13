@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Inserir_lista_produtos"
+    tools:showIn="@layout/activity_inserir_lista_produtos">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="#F44336">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextNome_do_produto"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="@string/introduzir_nome_do_produtos" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColorHint="#F44336">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColorHint="#F44336">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/introduzir_categoria" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextQuantidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/introduzir_quantidades" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

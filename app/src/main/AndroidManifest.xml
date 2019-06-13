@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lista_compras">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".eliminar_dinheiro_gasto"
+            android:label="@string/title_activity_eliminar_dinheiro_gasto"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".eliminar_compras_efetuadas"
+            android:label="@string/title_activity_eliminar_compras_efetuadas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".eliminar_lista_produtos"
+            android:label="@string/title_activity_eliminar_lista_produtos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".alterar_dinheiro_gasto"
+            android:label="@string/title_activity_alterar_dinheiro_gasto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".alterar_compras_efetuadas"
+            android:label="@string/title_activity_alterar_compras_efetuadas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".alterar_lista_produtos"
+            android:label="@string/title_activity_alterar_lista_produtos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".inserir_dinheiro_gasto"
+            android:label="@string/title_activity_inserir_dinheiro_gasto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".inserir_compras_efetuadas"
+            android:label="@string/title_activity_inserir_compras_efetuadas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Inserir_lista_produtos"
+            android:label="@string/title_activity_inserir_lista_produtos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Dinheiro_gasto"
+            android:label="@string/title_activity_dinheiro_gasto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BotaoCarregado"
+            android:label="@string/title_activity_botao_carregado"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Categoria"
+            android:label="@string/title_activity_produtos_adquirir"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <provider
+            android:authorities="com.example.lista_compras"
+            android:name=".Compras_Efetuadas_ContentProvider"
+            android:exported="false"/>
+    </application>
+
+</manifest>
