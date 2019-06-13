@@ -39,7 +39,7 @@ public class Categoria extends AppCompatActivity  implements LoaderManager.Loade
 
         //Botao Voltar
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

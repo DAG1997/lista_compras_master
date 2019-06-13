@@ -31,7 +31,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editTextNome_do_produto = (EditText) findViewById(R.id.editTextNome_do_produto);
-        editTextQuantidade = (EditText) findViewById(R.id.editTextQuantidade);
+        editTextQuantidade = (EditText) findViewById(R.id.editTextAlterarDia);
         editTextCategoria = (EditText) findViewById(R.id.editTextNome_do_produto);
     }
 

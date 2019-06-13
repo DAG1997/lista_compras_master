@@ -25,7 +25,7 @@ public class BdTableListaProdutos implements BaseColumns {
     public void cria() {
         db.execSQL(
                 "CREATE TABLE " + NOME_TABELA + "(" +
-                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         NOME_PRODUTO + " TEXT NOT NULL," +
                         QUANTIDADE + " INTEGER NOT NULL," +
                         CAMPO_CATEGORIA + " TEXT NOT NULL,"+

@@ -236,9 +236,14 @@ public class BdListaComprasTest {
 
 
         // Teste read/delete filmes (cRuD)
+        id = criaListaProdutos(tabelaListaProdutos, " Leite",  2, "Leite e seus derivados");
+        cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
+        assertEquals(3, cursorListaProdutos.getCount());
+
         tabelaListaProdutos.delete(BdTableListaProdutos._ID + "=?", new String[]{String.valueOf(id)});
         cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
         assertEquals(2, cursorListaProdutos.getCount());
+
 
 
 
@@ -341,8 +346,76 @@ public class BdListaComprasTest {
 
 
         BdTableDinheiroGasto tabelaDinheiroGasto = new BdTableDinheiroGasto(db);
+        // Teste read Compras Efetuadas (cRud)
+        Cursor cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
+        assertEquals(0, cursorDinheiroGasto.getCount());
 
-        // Teste read dinheiro gasto (cRud)
+        // Teste create/read Compras Efetuadas (CRud)
+
+        String Dia = "Segunda_feira";
+        int Montante_gasto = 26;
+
+        id = criaDinheiroGasto(tabelaDinheiroGasto, Dia, Montante_gasto);
+
+        cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
+        assertEquals(1, cursorDinheiroGasto.getCount());
+
+        DinheiroGasto dinheiroGasto = getDinheiroGastoComID(cursorDinheiroGasto, id);
+
+        assertEquals(Dia, dinheiroGasto.getDia());
+        assertEquals(Montante_gasto, dinheiroGasto.getMontante_gasto());
+
+
+
+
+        Dia = "Terça-feira";
+        Montante_gasto = 19;
+        id = criaDinheiroGasto(tabelaDinheiroGasto, Dia, Montante_gasto);
+
+        cursorDinheiroGasto= getDinheiroGasto(tabelaDinheiroGasto);
+        assertEquals(2, cursorDinheiroGasto.getCount());
+
+        dinheiroGasto = getDinheiroGastoComID(cursorDinheiroGasto, id);
+
+        assertEquals(Dia, dinheiroGasto.getDia());
+        assertEquals(Montante_gasto, dinheiroGasto.getMontante_gasto());
+
+
+        // Teste Update/Read categorias (cRUd)
+
+        //UPDATE
+        Dia = " Terça_feira ";
+        Montante_gasto = 24;
+
+
+        categorias.setNome_da_categoria(Nome_da_categoria);
+        categorias.setTipo_de_produto(Tipo_de_produto);
+
+
+        tabelaDinheiroGasto.update(dinheiroGasto.getContentValues(), BdTableDinheiroGasto._ID + "=?", new String[]{String.valueOf(id)});
+
+        cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
+
+
+        dinheiroGasto = getDinheiroGastoComID(cursorDinheiroGasto, id);
+
+        assertEquals(Dia, dinheiroGasto.getDia());
+        assertEquals(Montante_gasto, dinheiroGasto.getMontante_gasto());
+
+
+        // Teste Create/Delete/Read autores (CRuD)
+        id = criaDinheiroGasto(tabelaDinheiroGasto, " Quarta-feira",  26);
+        cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
+        assertEquals(3, cursorDinheiroGasto.getCount());
+
+        tabelaDinheiroGasto.delete(BdTableDinheiroGasto._ID + "=?", new String[]{String.valueOf(id)});
+        cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
+        assertEquals(2, cursorDinheiroGasto.getCount());
+
+
+
+
+        /*// Teste read dinheiro gasto (cRud)
         Cursor cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
         assertEquals(0, cursorDinheiroGasto.getCount());
 
@@ -395,7 +468,7 @@ public class BdListaComprasTest {
         cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
         assertEquals(2, cursorDinheiroGasto.getCount());
 
-        getDinheiroGastoComID(cursorDinheiroGasto, idDinheiro);
+        getDinheiroGastoComID(cursorDinheiroGasto, idDinheiro);*/
 
 
 
@@ -469,10 +542,10 @@ public class BdListaComprasTest {
 
 
 
-    private long criaDinheiroGasto(BdTableDinheiroGasto tabelaDinheiroGasto, String data, int montante_gasto) {
+    private long criaDinheiroGasto(BdTableDinheiroGasto tabelaDinheiroGasto, String dia, int montante_gasto) {
         DinheiroGasto dinheiroGasto = new DinheiroGasto();
 
-        dinheiroGasto.setData(data);
+        dinheiroGasto.setDia(dia);
         dinheiroGasto.setMontante_gasto(montante_gasto);
 
 

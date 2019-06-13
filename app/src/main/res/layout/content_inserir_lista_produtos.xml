@@ -32,14 +32,14 @@
             android:textColorHint="#F44336">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCategoria"
+                android:id="@+id/editTextAlterar_Montante_gasto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/introduzir_categoria" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextQuantidade"
+            android:id="@+id/editTextAlterarDia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/introduzir_quantidades" />

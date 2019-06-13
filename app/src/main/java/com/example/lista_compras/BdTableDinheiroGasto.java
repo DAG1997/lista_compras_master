@@ -6,13 +6,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 public class BdTableDinheiroGasto implements BaseColumns {
-    public static final String NOME_TABELA = "DINHEIRO_GASTO";
-    public static final String DATA = "Data";
-    public static final String MONTANTE_GASTO = "Montante_gasto";
+    public static final String NOME_TABELA = "Dinheiro_gasto";
+
+    public static final String MONTANTE_GASTO = "Dinheiro_dispendido";
+    public static final String DIA = "Dia_da_semana";
+
+
+
+    public static final String[] TODAS_COLUNAS = new String[]{_ID, MONTANTE_GASTO, DIA};
+
 
     public SQLiteDatabase db;
 
-    public static final String[] TODAS_COLUNAS = new String[]{_ID, DATA, MONTANTE_GASTO};
 
     public BdTableDinheiroGasto(SQLiteDatabase db) {
         this.db = db;
@@ -20,14 +25,20 @@ public class BdTableDinheiroGasto implements BaseColumns {
 
     public void cria() {
         db.execSQL(
-
                 "CREATE TABLE " + NOME_TABELA + "(" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        DATA + " STRING NOT NULL," +
-                        MONTANTE_GASTO + " NUMBER NOT NULL" +
+                        MONTANTE_GASTO + " TEXT NOT NULL," +
+                        DIA + " TEXT NOT NULL" +
+
+
+
                         ")"
+
+
+
         );
     }
+
 
     public Cursor query(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
         return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
@@ -45,6 +56,9 @@ public class BdTableDinheiroGasto implements BaseColumns {
         return db.delete(NOME_TABELA, whereClause, whereArgs);
     }
 }
+
+
+
 
 
 

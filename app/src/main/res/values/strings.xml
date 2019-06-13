@@ -62,4 +62,10 @@
     <string name="eliminarz">Eliminar</string>
     <string name="cancelare">Cancelar</string>
     <string name="guardare">Guardar</string>
+    <string name="introduzir_montante_gasto">Introduzir montante gasto</string>
+    <string name="introduzir_dia_da_semana">Introduzir dia da semana</string>
+    <string name="dia_da_semana">Dia da semana</string>
+    <string name="quarta_feira">Quarta-feira</string>
+    <string name="montante_gasto">Montante gasto</string>
+    <string name="_32">32</string>
 </resources>

@@ -39,7 +39,7 @@ public class Dinheiro_gasto extends AppCompatActivity  implements LoaderManager.
 
         //Botao Voltar
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

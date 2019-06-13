@@ -33,9 +33,9 @@ public class BdListaComprasOpenHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
+        new BdTableCategorias(db).cria();
         new BdTableListaProdutos(db).cria();
         new BdTableDinheiroGasto(db).cria();
-        new BdTableCategorias(db).cria();
     }
 
     /**

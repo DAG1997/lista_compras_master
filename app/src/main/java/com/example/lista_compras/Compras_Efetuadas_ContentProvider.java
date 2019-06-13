@@ -17,12 +17,12 @@ import androidx.annotation.NonNull;
 import static com.example.lista_compras.BdTableCategorias.*;
 
 public class Compras_Efetuadas_ContentProvider extends ContentProvider {
-    public static final String AUTHORITY = "pt.ipg.livros";
+    public static final String AUTHORITY = "com.example.lista_compras";
     public static final String CATEGORIAS = "nomes das categorias";
     public static final String DINHEIROGASTO = "dinheiro";
     public static final String LISTAPRODUTOS = "produtos";
 
-    private static final Uri ENDERECO_BASE = Uri.parse("content://com.example.lista_compras" + AUTHORITY);
+    private static final Uri ENDERECO_BASE = Uri.parse("content://" + AUTHORITY);
 
     public static final Uri ENDERECO_CATEGORIAS = Uri.withAppendedPath(ENDERECO_BASE, CATEGORIAS);
 
@@ -168,13 +168,13 @@ public class Compras_Efetuadas_ContentProvider extends ContentProvider {
                 return new BdTableDinheiroGasto(bd).query(projection, selection, selectionArgs, null, null, sortOrder);
 
             case URI_DINHEIROGASTO_ESPECIFICO:
-                return new BdTableDinheiroGasto(bd).query(projection, BdTableDinheiroGasto._ID + "=?", new String[]{id}, null, null, null);
+                return new BdTableDinheiroGasto(bd).query(projection, BdTableDinheiroGasto.NOME_TABELA + "." + BdTableDinheiroGasto._ID + "=?", new String[]{id}, null, null, null);
 
             case URI_LISTAPRODUTOS:
                 return new BdTableListaProdutos(bd).query(projection, selection, selectionArgs, null, null, sortOrder);
 
             case URI_LISTAPRODUTOS_ESPECIFICAS:
-                return new BdTableListaProdutos(bd).query(projection, BdTableListaProdutos._ID + "=?", new String[]{id}, null, null, null);
+                return new BdTableListaProdutos(bd).query(projection, BdTableListaProdutos.NOME_TABELA + "." + BdTableListaProdutos._ID + "=?", new String[]{id}, null, null, null);
 
 
             default:
@@ -363,7 +363,7 @@ public class Compras_Efetuadas_ContentProvider extends ContentProvider {
             case URI_LISTAPRODUTOS_ESPECIFICAS:
                 return new BdTableListaProdutos(bd).update( values,BdTableListaProdutos._ID + "=?", new String[]{id});
 
-                default:
+            default:
                 throw new UnsupportedOperationException("URI inválida(UPDATE):" + uri.toString());
         }
 

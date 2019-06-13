@@ -23,8 +23,8 @@ public class eliminar_compras_efetuadas extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView textViewNome_da_categoria = (TextView) findViewById(R.id.textViewEliminar_nome_da_categoria);
-        TextView textViewTipo_de_produto = (TextView) findViewById(R.id.textViewEliminar_tipo_de_produto);
+        TextView textViewNome_da_categoria = (TextView) findViewById(R.id.textViewEliminarDia);
+        TextView textViewTipo_de_produto = (TextView) findViewById(R.id.textViewEliminar_Montante_gasto);
 
         Intent intent = getIntent();
         long idCategoria = intent.getLongExtra(Categoria.ID_CATEGORIAS, -1);

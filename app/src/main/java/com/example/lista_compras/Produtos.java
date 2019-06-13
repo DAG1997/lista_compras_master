@@ -37,7 +37,7 @@ public class Produtos extends AppCompatActivity  implements LoaderManager.Loader
 
         //Botao Voltar
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

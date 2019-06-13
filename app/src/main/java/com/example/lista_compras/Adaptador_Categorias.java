@@ -138,8 +138,7 @@ public class Adaptador_Categorias extends RecyclerView.Adapter<Adaptador_Categor
 
             viewHolderCategoriaSelecionada = this;
 
-            ((Categoria
-                    ) context).atualizaOpcoesMenu();
+            ((Categoria) context).atualizaOpcoesMenu();
 
             seleciona();
         }

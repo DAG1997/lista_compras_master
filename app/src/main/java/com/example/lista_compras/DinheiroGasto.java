@@ -5,7 +5,7 @@ import android.database.Cursor;
 
     public class DinheiroGasto {
         private long id;
-        private String data;
+        private String dia;
         private int montante_gasto;
 
         public long getId() {
@@ -16,12 +16,12 @@ import android.database.Cursor;
             this.id = id;
         }
 
-        public String getData() {
-            return data;
+        public String getDia() {
+            return dia;
         }
 
-        public void setData(String data) {
-            this.data = data;
+        public void setDia(String dia) {
+            this.dia = dia;
         }
 
         public int getMontante_gasto() {
@@ -35,7 +35,7 @@ import android.database.Cursor;
         public ContentValues getContentValues(){
             ContentValues valores = new ContentValues();
 
-            valores.put(BdTableDinheiroGasto.DATA, data);
+            valores.put(BdTableDinheiroGasto.DIA, dia);
             valores.put(BdTableDinheiroGasto.MONTANTE_GASTO, montante_gasto);
 
 
@@ -47,8 +47,8 @@ import android.database.Cursor;
                     cursor.getColumnIndex(BdTableDinheiroGasto._ID)
             );
 
-            String data = cursor.getString(
-                    cursor.getColumnIndex(BdTableDinheiroGasto.DATA)
+            String dia = cursor.getString(
+                    cursor.getColumnIndex(BdTableDinheiroGasto.DIA)
             );
 
              int montante_gasto = cursor.getInt(
@@ -63,7 +63,7 @@ import android.database.Cursor;
             DinheiroGasto dinheiroGasto = new DinheiroGasto();
 
             dinheiroGasto.setId(id);
-            dinheiroGasto.setData(data);
+            dinheiroGasto.setDia(dia);
             dinheiroGasto.setMontante_gasto(montante_gasto);
 
 
