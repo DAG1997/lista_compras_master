@@ -54,7 +54,7 @@ public class eliminar_lista_produtos extends AppCompatActivity {
 
         textViewNome_do_produto.setText(listaProdutos.getNome_do_produto());
         textViewQuantidade.setText(String.valueOf(listaProdutos.getQuantidade()));
-        textViewCategoria.setText(listaProdutos.getCategoria());
+        /*textViewCategoria.setText(listaProdutos.getCategoria());*/
     }
 
     @Override

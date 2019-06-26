@@ -72,7 +72,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
         editTextNome_do_produto.setText(listaProdutos.getNome_do_produto());
         editTextQuantidade.setText(String.valueOf(listaProdutos.getQuantidade()));
-        editTextCategoria.setText(listaProdutos.getCategoria());
+        /*editTextCategoria.setText(listaProdutos.getCategoria());*/
 
 
     }
@@ -136,7 +136,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
-        listaProdutos.setCategoria(categoria);
+        /*listaProdutos.setCategoria(categoria);*/
 
         try {
             getContentResolver().update(enderecoListaProdutosEditar, listaProdutos.getContentValues(), null, null);

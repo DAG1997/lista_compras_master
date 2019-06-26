@@ -108,7 +108,7 @@ public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_List
     public class ViewHolderListaProdutos extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textViewNome_produto;
         private TextView textViewQuantidade;
-        private TextView textViewCategoria;
+        /*private TextView textViewCategoria;*/
 
 
         private ListaProdutos listaProdutos;
@@ -118,7 +118,7 @@ public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_List
 
             textViewNome_produto = (TextView)itemView.findViewById(R.id.textViewNome_produto);
             textViewQuantidade = (TextView)itemView.findViewById(R.id.textViewQuantidade);
-            textViewCategoria = (TextView)itemView.findViewById(R.id.textViewCategoria);
+            /*textViewCategoria = (TextView)itemView.findViewById(R.id.textViewCategoria);*/
 
             itemView.setOnClickListener(this);
         }
@@ -127,8 +127,8 @@ public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_List
             this.listaProdutos = listaProdutos;
 
             textViewNome_produto.setText(listaProdutos.getNome_do_produto());
-            textViewQuantidade.setText(listaProdutos.getQuantidade());
-            textViewCategoria.setText(listaProdutos.getCategoria());
+            textViewQuantidade.setText(String.valueOf(listaProdutos.getQuantidade()));
+            /*textViewCategoria.setText(listaProdutos.getCategoria());*/
 
         }
 

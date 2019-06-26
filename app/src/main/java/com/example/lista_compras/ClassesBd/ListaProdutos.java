@@ -3,7 +3,6 @@ package com.example.lista_compras.ClassesBd;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.example.lista_compras.BD.BdTableCategorias;
 import com.example.lista_compras.BD.BdTableListaProdutos;
 
 public class ListaProdutos {
@@ -11,17 +10,17 @@ public class ListaProdutos {
     private long id;
     private String nome_do_produto;
     private int quantidade;
-    private String categoria;
-    private String nomeCategoria;
+    private long categoria;
+    //private String nomeCategoria;
 
 
-    public String getNomeCategoria() {
+    /*public String getNomeCategoria() {
         return nomeCategoria;
-    }
+    }*/
 
-    public void setNomeCategoria(String nomeCategoria) {
+   /* public void setNomeCategoria(String nomeCategoria) {
         this.nomeCategoria = nomeCategoria;
-    }
+    }*/
 
     public long getId() {
         return id;
@@ -47,11 +46,11 @@ public class ListaProdutos {
         this.quantidade = quantidade;
     }
 
-    public String getCategoria() {
+    public long getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Long categoria) {
         this.categoria = categoria;
     }
 
@@ -80,13 +79,13 @@ public class ListaProdutos {
                 cursor.getColumnIndex(BdTableListaProdutos.QUANTIDADE)
         );
 
-        String categoria = cursor.getString(
+        long categoria = cursor.getLong(
                 cursor.getColumnIndex(BdTableListaProdutos.CAMPO_CATEGORIA)
         );
 
-        String nomeCategoria = cursor.getString(
+        /*String nomeCategoria = cursor.getString(
                 cursor.getColumnIndex(BdTableListaProdutos.ALIAS_NOME_CATEGORIA)
-        );
+        );*/
 
 
         ListaProdutos listaProdutos = new ListaProdutos();
@@ -95,7 +94,7 @@ public class ListaProdutos {
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
         listaProdutos.setCategoria(categoria);
-        listaProdutos.setNomeCategoria(nomeCategoria);
+        //listaProdutos.setNomeCategoria(nomeCategoria);
 
 
         return listaProdutos;

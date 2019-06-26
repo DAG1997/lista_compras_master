@@ -27,6 +27,9 @@ import static org.junit.Assert.assertTrue;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+
+
+
 @RunWith(AndroidJUnit4.class)
 public class BdListaComprasTest {
     @Before
@@ -133,52 +136,7 @@ public class BdListaComprasTest {
         getCategoriasComID(cursorCategorias, idFrutasLegumes);
 
 
-        /*String Nome_da_categoria = " Mercearia";
-        String Tipo_de_produto = " Carne, pescado e ovos";
 
-
-        long idMercearia = criaCategorias(tabelaCategorias, Nome_da_categoria,Tipo_de_produto,idMercearia);
-        cursorComprasEfetuadas = getComprasEfetuadas(tabelaComprasEfetuadas);
-        assertEquals(1, cursorComprasEfetuadas.getCount());
-
-        Categorias categorias = getComprasEfetuadasComID(cursorComprasEfetuadas, id);
-        assertEquals(quantidade, categorias.getQuantidade());
-        assertEquals(idPacotesArroz, categorias.getLista_produtos());
-
-
-        quantidade = 14;
-
-
-        id = (long) criaComprasEfetuadas(tabelaComprasEfetuadas,quantidade,idPacotesAtum);
-        cursorComprasEfetuadas = getComprasEfetuadas(tabelaComprasEfetuadas);
-        assertEquals(2, cursorComprasEfetuadas.getCount());
-
-        categorias = getComprasEfetuadasComID(cursorComprasEfetuadas, id);
-        assertEquals(quantidade, categorias.getQuantidade());
-        assertEquals(idPacotesAtum, categorias.getLista_produtos());
-
-
-        // Teste read/update compras efetuadas (cRUd)
-        categorias = getComprasEfetuadasComID(cursorComprasEfetuadas, id);
-
-        quantidade = 7;
-
-
-        categorias.setQuantidade(quantidade);
-
-
-        tabelaComprasEfetuadas.update(categorias.getContentValues(), BdTableCategorias._ID + "=?", new String[]{String.valueOf(id)});
-
-        cursorComprasEfetuadas = getComprasEfetuadas(tabelaComprasEfetuadas);
-
-        categorias = (Categorias) getComprasEfetuadasComID(cursorComprasEfetuadas, id);
-        assertEquals(quantidade, categorias.getQuantidade());
-        assertEquals(idPacotesArroz, categorias.getLista_produtos());
-
-        // Teste read/delete compras efetuadas (cRuD)
-        tabelaComprasEfetuadas.delete(BdTableCategorias._ID + "=?", new String[]{String.valueOf(id)});
-        cursorComprasEfetuadas = getComprasEfetuadas(tabelaComprasEfetuadas);
-        assertEquals(2, cursorComprasEfetuadas.getCount());*/
 
 
         BdTableListaProdutos tabelaListaProdutos = new BdTableListaProdutos(db);
@@ -190,7 +148,7 @@ public class BdListaComprasTest {
         // Teste create/read lista produtos (CRud)
         String nome_do_produto = "Febras";
         int quantidade  = 5;
-        String categoria = " Mercearia";
+        long categoria = idMercearia;
 
 
         id = criaListaProdutos(tabelaListaProdutos,nome_do_produto, quantidade, categoria);
@@ -209,7 +167,7 @@ public class BdListaComprasTest {
 
         nome_do_produto = "Bananas ";
         quantidade = 4;
-        categoria = " Frutas e legumes";
+        categoria = idFrutasLegumes;
         id = criaListaProdutos(tabelaListaProdutos, nome_do_produto, quantidade, categoria);
         cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
         assertEquals(2, cursorListaProdutos.getCount());
@@ -223,10 +181,10 @@ public class BdListaComprasTest {
 
         // Teste read/update livros (cRUd)
 
-        listaProdutos = getListaProdutosComID(cursorListaProdutos, id);
-        nome_do_produto = "Caixas de cereais";
+        /*listaProdutos = getListaProdutosComID(cursorListaProdutos, id);*/
+        nome_do_produto = "Latas de atum";
         quantidade = 7;
-        categoria = "Cereais e outros derivados";
+        categoria = idMercearia;
 
 
         listaProdutos.setNome_do_produto(nome_do_produto);
@@ -243,8 +201,9 @@ public class BdListaComprasTest {
         assertEquals(categoria,  listaProdutos.getCategoria());
 
 
-        // Teste read/delete filmes (cRuD)
-        id = criaListaProdutos(tabelaListaProdutos, " Leite",  2, "Leite e seus derivados");
+
+        // Teste read/delete listaprodutos (cRuD)
+        id = criaListaProdutos(tabelaListaProdutos, " Latas de atum",  2, idMercearia);
         cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
         assertEquals(3, cursorListaProdutos.getCount());
 
@@ -253,104 +212,6 @@ public class BdListaComprasTest {
         assertEquals(2, cursorListaProdutos.getCount());
 
 
-
-
-        // Teste read series (cRud)
-
-
-
-        /*// Teste read lista produtos (cRud)
-        Cursor cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
-        assertEquals(0, cursorListaProdutos.getCount());
-
-        // Teste create/read lista produtos (CRud)
-        String nome_do_produto = "Pacotes de Arroz";
-        int quantidade = 3;
-
-
-        long idPacotesArroz = criaListaProdutos(tabelaListaProdutos, nome_do_produto,quantidade);
-        cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
-        assertEquals(1, cursorListaProdutos.getCount());
-
-
-        ListaProdutos listaProdutos = getListaProdutosComID(cursorListaProdutos ,idPacotesArroz);
-        assertEquals(nome_do_produto, listaProdutos.getNome_do_produto());
-        assertEquals(nome_do_produto, listaProdutos.getQuantidade());
-
-
-        nome_do_produto = "Latas de Atum";
-        quantidade = 14;
-        long idLatasAtum = criaListaProdutos(tabelaListaProdutos, nome_do_produto, quantidade);
-        cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
-        assertEquals(2, cursorListaProdutos.getCount());
-
-        listaProdutos = getListaProdutosComID(cursorListaProdutos, idLatasAtum);
-        assertEquals(nome_do_produto, listaProdutos.getNome_do_produto());
-        assertEquals(quantidade, listaProdutos.getQuantidade());
-
-        nome_do_produto = "Latas de Salsichas";
-        quantidade = 10;
-        long idLatasSalsichas = criaListaProdutos(tabelaListaProdutos, nome_do_produto, quantidade);
-        cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
-        assertEquals(3, cursorListaProdutos.getCount());
-
-        listaProdutos = getListaProdutosComID(cursorListaProdutos, idLatasSalsichas);
-        assertEquals(nome_do_produto, listaProdutos.getNome_do_produto());
-        assertEquals(quantidade, listaProdutos.getQuantidade());
-
-
-        // Teste read/update lista produtos (cRUd)
-        listaProdutos = getListaProdutosComID(cursorListaProdutos, id);
-        nome_do_produto = "Bananas";
-        quantidade = "4";
-
-
-        listaProdutos.setNome_do_produto(nome_do_produto);
-        listaProdutos.setQuantidade(quantidade);
-
-        tabelaListaProdutos.update(listaProdutos.getContentValues(), BdTableListaProdutos._ID + "=?", new String[]{String.valueOf(id)});
-
-        cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
-
-        listaProdutos = getListaProdutosComID(cursorListaProdutos, id);
-        assertEquals(nome,  movie.getNome_filme());
-        assertEquals(tipo,  movie.getTipo_filme());
-        assertEquals(idRubenFleischer,  movie.getAutor_filme());
-        assertEquals(classificacao,  movie.getClassificacao_filme(), 1);
-        assertEquals(ano,  movie.getAno_filme());
-        assertEquals(descricao,  movie.getDescricao_filme());
-        /*nome_produto = "Carbohidratos / Pacotes de Arroz ";
-        //quantidade = 7;
-        listaProdutos.setNome_produto(nome_produto);
-        //listaProdutos.setQuantidade(quantidade);
-
-        int registosAlterados = tabelaListaProdutos.update(listaProdutos.getContentValues(), BdTableListaProdutos._ID + "=?", new String[]{String.valueOf(idPacotesArroz)});
-
-        assertEquals(1, registosAlterados);
-
-
-
-        tabelaListaProdutos.update(listaProdutos.getContentValues(), BdTableListaProdutos._ID + "=?", new String[]{String.valueOf(idPacotesArroz)});
-
-        cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
-
-        listaProdutos = getListaProdutosComID(cursorListaProdutos, idPacotesArroz);
-        assertEquals(nome_produto, listaProdutos.getNome_produto());
-        //assertEquals(quantidade, listaProdutos.getQuantidade());*/
-
-
-       /* // Teste read/delete lista produtos (cRuD)
-        long id = criaListaProdutos(tabelaListaProdutos, "TESTE", quantidade);
-        cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
-        assertEquals(3, cursorListaProdutos.getCount());
-
-
-        tabelaListaProdutos.delete(BdTableListaProdutos._ID + "=?", new String[]{String.valueOf(id)});
-        cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
-        assertEquals(2, cursorListaProdutos.getCount());
-
-        getListaProdutosComID(cursorListaProdutos, idPacotesArroz);
-        getListaProdutosComID(cursorListaProdutos, idPacotesAtum);*/
 
 
         BdTableDinheiroGasto tabelaDinheiroGasto = new BdTableDinheiroGasto(db);
@@ -376,7 +237,7 @@ public class BdListaComprasTest {
 
 
 
-        Dia = "Terça-feira";
+        Dia = "Terca-feira";
         Montante_gasto = 19;
         id = criaDinheiroGasto(tabelaDinheiroGasto, Dia, Montante_gasto);
 
@@ -392,8 +253,8 @@ public class BdListaComprasTest {
         // Teste Update/Read categorias (cRUd)
 
         //UPDATE
-        Dia = " Terça_feira ";
-        Montante_gasto = 24;
+        Dia = "Terca-feira";
+        Montante_gasto = 19;
 
 
         categorias.setNome_da_categoria(Nome_da_categoria);
@@ -421,99 +282,8 @@ public class BdListaComprasTest {
         assertEquals(2, cursorDinheiroGasto.getCount());
 
 
-
-
-        /*// Teste read dinheiro gasto (cRud)
-        Cursor cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
-        assertEquals(0, cursorDinheiroGasto.getCount());
-
-        // Teste create/read dinheiro gasto (CRud)
-        String data = "26/04/2019";
-        int montante_gasto = 36;
-
-        long idDinheiro = criaDinheiroGasto(tabelaDinheiroGasto, data,montante_gasto);
-        cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
-        assertEquals(1, cursorDinheiroGasto.getCount());
-
-        DinheiroGasto dinheiroGasto =  getDinheiroGastoComID(cursorDinheiroGasto, idDinheiro);
-        assertEquals(data, dinheiroGasto.getData());
-        assertEquals(montante_gasto, dinheiroGasto.getMontante_gasto());
-
-
-        data = "2/06/2019";
-        montante_gasto = 139;
-         idDinheiro = criaDinheiroGasto(tabelaDinheiroGasto, data, montante_gasto);
-        cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
-        assertEquals(2, cursorDinheiroGasto.getCount());
-
-        dinheiroGasto = getDinheiroGastoComID(cursorDinheiroGasto, idDinheiro);
-        assertEquals(data, dinheiroGasto.getData());
-        assertEquals(montante_gasto, dinheiroGasto.getMontante_gasto());
-
-
-        // Teste read/update dinheiro gasto (cRUd)
-        dinheiroGasto = getDinheiroGastoComID(cursorDinheiroGasto,id);
-        data = " 2/06/2019 ";
-        montante_gasto = 145;
-        dinheiroGasto.setData(data);
-        dinheiroGasto.setMontante_gasto(montante_gasto);
-
-
-        tabelaDinheiroGasto.update(dinheiroGasto.getContentValues(), BdTableDinheiroGasto._ID + "=?", new String[]{String.valueOf(id)});
-
-        cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
-
-        dinheiroGasto = getDinheiroGastoComID(cursorDinheiroGasto, id);
-        assertEquals(data, dinheiroGasto.getData());
-        assertEquals(montante_gasto, dinheiroGasto.getMontante_gasto());
-
-
-        // Teste read/delete dinheiro gasto (cRuD)
-
-
-
-        tabelaDinheiroGasto.delete(BdTableDinheiroGasto._ID + "=?", new String[]{String.valueOf(id)});
-        cursorDinheiroGasto = getDinheiroGasto(tabelaDinheiroGasto);
-        assertEquals(2, cursorDinheiroGasto.getCount());
-
-        getDinheiroGastoComID(cursorDinheiroGasto, idDinheiro);*/
-
-
-
     }
 
-
-
-    private long criaListaProdutos(BdTableListaProdutos tabelaListaProdutos, String nome_produto, int quantidade, String categoria){
-          ListaProdutos lista_produtos = new ListaProdutos();
-        lista_produtos.setNome_do_produto(nome_produto);
-        lista_produtos.setQuantidade(quantidade);
-        lista_produtos.setCategoria(categoria);
-
-        long id = tabelaListaProdutos.insert(lista_produtos.getContentValues());
-        assertNotEquals(-1, id);
-
-        return id;
-    }
-
-    private Cursor getListaProdutos(BdTableListaProdutos tabelaListaProdutos) {
-        return tabelaListaProdutos.query(BdTableListaProdutos.TODAS_COLUNAS, null, null, null, null, null);
-    }
-
-    private ListaProdutos getListaProdutosComID(Cursor cursor, long id) {
-        ListaProdutos lista_produtos = null;
-
-        while (cursor.moveToNext()) {
-            if (ListaProdutos.fromCursor(cursor).getId() == id) {
-                lista_produtos = ListaProdutos.fromCursor(cursor);
-                break;
-            }
-        }
-
-        assertNotNull(lista_produtos);
-
-        return lista_produtos;
-    }
 
     private long criaCategorias(BdTableCategorias tabelaCategorias ,String nome_da_categoria, String tipo_de_produto) {
 
@@ -546,6 +316,40 @@ public class BdListaComprasTest {
         assertNotNull(categorias);
 
         return categorias;
+    }
+
+    private ListaProdutos getListaProdutosComID(Cursor cursor, long id) {
+        ListaProdutos lista_produtos = null;
+
+        while (cursor.moveToNext()) {
+            if (ListaProdutos.fromCursor(cursor).getId() == id) {
+                lista_produtos = ListaProdutos.fromCursor(cursor);
+                break;
+            }
+        }
+
+        assertNotNull(lista_produtos);
+
+        return lista_produtos;
+    }
+
+
+
+    private long criaListaProdutos(BdTableListaProdutos tabelaListaProdutos, String nome_do_produto, int quantidade, Long categoria){
+        ListaProdutos lista_produtos = new ListaProdutos();
+        lista_produtos.setNome_do_produto(nome_do_produto);
+        lista_produtos.setQuantidade(quantidade);
+        lista_produtos.setCategoria(categoria);
+
+        long id = tabelaListaProdutos.insert(lista_produtos.getContentValues());
+        assertNotEquals(-1, id);
+
+        return id;
+    }
+
+
+    private Cursor getListaProdutos(BdTableListaProdutos tabelaListaProdutos) {
+        return tabelaListaProdutos.query(BdTableListaProdutos.TODAS_COLUNAS, null, null, null, null, null);
     }
 
 

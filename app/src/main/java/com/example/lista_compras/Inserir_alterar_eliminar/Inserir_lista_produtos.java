@@ -122,7 +122,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
 
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
-        listaProdutos.setCategoria(categoria);
+        /*listaProdutos.setCategoria(categoria);*/
 
 
         try {
