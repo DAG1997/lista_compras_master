@@ -1,7 +1,9 @@
-package com.example.lista_compras;
+package com.example.lista_compras.ClassesBd;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+
+import com.example.lista_compras.BD.BdTableCategorias;
 
 public class Categorias {
 

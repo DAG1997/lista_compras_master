@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Inserir_alterar_eliminar;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,6 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 
+import com.example.lista_compras.BD.BdTableListaProdutos;
+import com.example.lista_compras.BD.Compras_Efetuadas_ContentProvider;
+import com.example.lista_compras.ClassesBd.ListaProdutos;
+import com.example.lista_compras.Main_Recyclers.Produtos;
+import com.example.lista_compras.R;
 import com.google.android.material.snackbar.Snackbar;
 
 public class alterar_lista_produtos extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -24,7 +29,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
     private EditText editTextQuantidade;
     private EditText editTextCategoria;
 
-    private  ListaProdutos listaProdutos = null;
+    private ListaProdutos listaProdutos = null;
 
     private Uri enderecoListaProdutosEditar;
 
@@ -159,6 +164,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
+
 
     }
 

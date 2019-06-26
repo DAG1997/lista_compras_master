@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Inserir_alterar_eliminar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,8 +11,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.lista_compras.BD.BdTableCategorias;
+import com.example.lista_compras.BD.BdTableListaProdutos;
+import com.example.lista_compras.BD.Compras_Efetuadas_ContentProvider;
+import com.example.lista_compras.ClassesBd.ListaProdutos;
+import com.example.lista_compras.R;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Inserir_lista_produtos extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -22,6 +29,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
     private EditText editTextNome_do_produto;
     private EditText editTextQuantidade;
     private EditText editTextCategoria;
+    /*private Spinner spinnerCategoria;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +39,10 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editTextNome_do_produto = (EditText) findViewById(R.id.editTextNome_do_produto);
-        editTextQuantidade = (EditText) findViewById(R.id.editTextAlterarDia);
-        editTextCategoria = (EditText) findViewById(R.id.editTextNome_do_produto);
+        /*spinnerCategoria = findViewById(R.id.spinnerCategoria);*/
+        editTextQuantidade = (EditText) findViewById(R.id.editTextQuantidade);
+        editTextCategoria = (EditText) findViewById(R.id.editTextCategoria);
+
     }
 
     @Override
@@ -41,6 +51,17 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
 
         super.onResume();
     }
+
+   /* private void mostraCategoriasSpinner(Cursor cursorCategorias) {
+        SimpleCursorAdapter adaptadorCategorias = new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                cursorCategorias,
+                new String[]{BdTableCategorias.NOME_CATEGORIA},
+                new int[]{android.R.id.text1}
+        );
+        spinnerCategoria.setAdapter(adaptadorCategorias);
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -94,12 +115,15 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
             return;
         }
 
+        /*long idCategorias = spinnerCategoria.getSelectedItemId();*/
+
         ListaProdutos listaProdutos = new ListaProdutos();
 
 
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
         listaProdutos.setCategoria(categoria);
+
 
         try {
             getContentResolver().insert(Compras_Efetuadas_ContentProvider.ENDEREÇO_LISTAPRODUTOS, listaProdutos.getContentValues());
@@ -126,6 +150,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
+        /*mostraCategoriasSpinner(data);*/
 
     }
 

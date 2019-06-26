@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Inserir_alterar_eliminar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,11 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lista_compras.BD.BdTableDinheiroGasto;
+import com.example.lista_compras.BD.Compras_Efetuadas_ContentProvider;
+import com.example.lista_compras.ClassesBd.DinheiroGasto;
+import com.example.lista_compras.Main_Recyclers.Dinheiro_gasto;
+import com.example.lista_compras.R;
 
 
 public class eliminar_dinheiro_gasto extends AppCompatActivity {

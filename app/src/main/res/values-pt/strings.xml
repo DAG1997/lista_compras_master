@@ -29,8 +29,6 @@
     <string name="salsichas">Salsichas</string>
     <string name="lista_de_compras">Lista de Compras</string>
     <string name="introduzir_nome_do_produtos">Introduzir Nome do Produto</string>
-    <string name="introduzir_categoria">Introduzir Categoria</string>
-    <string name="introduzir_quantidades">Introduzir Quantidade</string>
     <string name="introduzir_nome_da_categoria">Introduzir Nome da Categoria</string>
     <string name="introduzir_tipo_de_produto">Introduzir Tipo de produto</string>
     <string name="nome_da_categoria">Nome_da_categoria</string>
@@ -40,7 +38,6 @@
     <string name="azeite">Azeite</string>
     <string name="quantidade">Quantidade</string>
     <string name="_2">2</string>
-    <string name="categoria">Categoria</string>
     <string name="leos_azeites_e_outros">Òleos, azeites e outros</string>
     <string name="adicionar">Adicionar</string>
     <string name="editar">Editar</string>
@@ -55,4 +52,9 @@
     <string name="quarta_feira">Quarta-feira</string>
     <string name="montante_gasto">Montante gasto</string>
     <string name="_32">32</string>
+    <string name="lista_produtos">Lista Produtos</string>
+    <string name="introduzir_quantidades">Introduzir Quantidade</string>
+    <string name="action_settings">Definicoes</string>
+    <string name="nome_do_produto">Nome_do_produto</string>
+    <string name="introduzir_categoria">categoria</string>
 </resources>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".alterar_compras_efetuadas"
+    tools:context=".Inserir_alterar_eliminar.alterar_compras_efetuadas"
     tools:showIn="@layout/activity_alterar_compras_efetuadas">
 
 

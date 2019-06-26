@@ -1,7 +1,10 @@
-package com.example.lista_compras;
+package com.example.lista_compras.ClassesBd;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+
+import com.example.lista_compras.BD.BdTableCategorias;
+import com.example.lista_compras.BD.BdTableListaProdutos;
 
 public class ListaProdutos {
 
@@ -9,6 +12,16 @@ public class ListaProdutos {
     private String nome_do_produto;
     private int quantidade;
     private String categoria;
+    private String nomeCategoria;
+
+
+    public String getNomeCategoria() {
+        return nomeCategoria;
+    }
+
+    public void setNomeCategoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
+    }
 
     public long getId() {
         return id;
@@ -50,6 +63,7 @@ public class ListaProdutos {
         valores.put(BdTableListaProdutos.CAMPO_CATEGORIA,categoria);
 
 
+
         return valores;
     }
 
@@ -70,6 +84,10 @@ public class ListaProdutos {
                 cursor.getColumnIndex(BdTableListaProdutos.CAMPO_CATEGORIA)
         );
 
+        String nomeCategoria = cursor.getString(
+                cursor.getColumnIndex(BdTableListaProdutos.ALIAS_NOME_CATEGORIA)
+        );
+
 
         ListaProdutos listaProdutos = new ListaProdutos();
 
@@ -77,6 +95,7 @@ public class ListaProdutos {
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
         listaProdutos.setCategoria(categoria);
+        listaProdutos.setNomeCategoria(nomeCategoria);
 
 
         return listaProdutos;

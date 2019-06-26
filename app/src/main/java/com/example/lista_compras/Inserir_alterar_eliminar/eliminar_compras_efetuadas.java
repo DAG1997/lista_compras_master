@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Inserir_alterar_eliminar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,11 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lista_compras.BD.BdTableCategorias;
+import com.example.lista_compras.BD.Compras_Efetuadas_ContentProvider;
+import com.example.lista_compras.ClassesBd.Categorias;
+import com.example.lista_compras.Main_Recyclers.Categoria;
+import com.example.lista_compras.R;
 
 
 public class eliminar_compras_efetuadas extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.BD;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

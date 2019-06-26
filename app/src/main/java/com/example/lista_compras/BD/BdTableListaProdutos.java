@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.BD;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.example.lista_compras.BD.BdTableCategorias;
 
 public class BdTableListaProdutos implements BaseColumns {
     public static final String NOME_TABELA = "LISTA_PRODUTOS";

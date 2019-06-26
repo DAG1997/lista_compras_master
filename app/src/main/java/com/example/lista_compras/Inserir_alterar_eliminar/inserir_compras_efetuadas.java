@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Inserir_alterar_eliminar;
 
 
 import androidx.annotation.NonNull;
@@ -13,6 +13,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.lista_compras.BD.BdTableCategorias;
+import com.example.lista_compras.BD.Compras_Efetuadas_ContentProvider;
+import com.example.lista_compras.ClassesBd.Categorias;
+import com.example.lista_compras.R;
 import com.google.android.material.snackbar.Snackbar;
 
 

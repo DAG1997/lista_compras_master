@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Inserir_alterar_eliminar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,10 +13,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import com.example.lista_compras.BD.BdTableDinheiroGasto;
+import com.example.lista_compras.BD.Compras_Efetuadas_ContentProvider;
+import com.example.lista_compras.ClassesBd.DinheiroGasto;
+import com.example.lista_compras.Main_Recyclers.Dinheiro_gasto;
+import com.example.lista_compras.R;
 import com.google.android.material.snackbar.Snackbar;
 
 public class alterar_dinheiro_gasto extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {

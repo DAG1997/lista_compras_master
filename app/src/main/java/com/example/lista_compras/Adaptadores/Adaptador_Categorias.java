@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Adaptadores;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -11,11 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_Lista_Compras.ViewHolderListaProdutos> {
+import com.example.lista_compras.Main_Recyclers.Categoria;
+import com.example.lista_compras.ClassesBd.Categorias;
+import com.example.lista_compras.R;
+
+public class Adaptador_Categorias extends RecyclerView.Adapter<Adaptador_Categorias.ViewHolderCategorias> {
     private Cursor cursor;
     private Context context;
 
-    public Adaptador_Lista_Compras(Context context) {
+    public Adaptador_Categorias(Context context) {
         this.context = context;
     }
 
@@ -48,10 +52,10 @@ public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_List
      */
     @NonNull
     @Override
-    public ViewHolderListaProdutos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemLista_Produtos = LayoutInflater.from(context).inflate(R.layout.item_lista_produtos, parent, false);
+    public ViewHolderCategorias onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemCategorias = LayoutInflater.from(context).inflate(R.layout.item_compras_efetuadas, parent, false);
 
-        return new ViewHolderListaProdutos(itemLista_Produtos);
+        return new ViewHolderCategorias(itemCategorias);
     }
 
     /**
@@ -75,10 +79,10 @@ public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_List
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderListaProdutos holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderCategorias holder, int position) {
         cursor.moveToPosition(position);
-        ListaProdutos listaProdutos = ListaProdutos.fromCursor(cursor);
-        holder.setListaProdutos(listaProdutos);
+        Categorias categorias = Categorias.fromCursor(cursor);
+        holder.setCategorias(categorias);
     }
 
     /**
@@ -93,38 +97,35 @@ public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_List
         return cursor.getCount();
     }
 
-    public ListaProdutos getListaProdutosSelecionada() {
-        if (viewHolderListaProdutosSelecionada == null) return null;
+    public Categorias getCategoriaSelecionada() {
+        if (viewHolderCategoriaSelecionada == null) return null;
 
-        return viewHolderListaProdutosSelecionada.listaProdutos;
+        return viewHolderCategoriaSelecionada.categorias;
     }
 
-    private static ViewHolderListaProdutos viewHolderListaProdutosSelecionada = null;
+    private static ViewHolderCategorias viewHolderCategoriaSelecionada = null;
 
-    public class ViewHolderListaProdutos extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView textViewNome_produto;
-        private TextView textViewQuantidade;
-        private TextView textViewCategoria;
+    public class ViewHolderCategorias extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView textViewNome_da_categoria;
+        private TextView textViewTipo_de_produto;
 
 
-        private ListaProdutos listaProdutos;
+        private Categorias categorias;
 
-        public ViewHolderListaProdutos(@NonNull View itemView) {
+        public ViewHolderCategorias(@NonNull View itemView) {
             super(itemView);
 
-            textViewNome_produto = (TextView)itemView.findViewById(R.id.textViewNome_produto);
-            textViewQuantidade = (TextView)itemView.findViewById(R.id.textViewQuantidade);
-            textViewCategoria = (TextView)itemView.findViewById(R.id.textViewCategoria);
+            textViewNome_da_categoria = (TextView)itemView.findViewById(R.id.textViewQuantidade);
+            textViewTipo_de_produto = (TextView) itemView.findViewById(R.id.textViewTipo_de_produto);
 
             itemView.setOnClickListener(this);
         }
 
-        public void setListaProdutos(ListaProdutos listaProdutos) {
-            this.listaProdutos = listaProdutos;
+        public void setCategorias(Categorias categorias) {
+            this.categorias = categorias;
 
-            textViewNome_produto.setText(listaProdutos.getNome_do_produto());
-            textViewQuantidade.setText(listaProdutos.getQuantidade());
-            textViewCategoria.setText(listaProdutos.getCategoria());
+            textViewNome_da_categoria.setText(categorias.getNome_da_categoria());
+            textViewTipo_de_produto.setText(categorias.getTipo_de_produto());
 
         }
 
@@ -135,13 +136,13 @@ public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_List
          */
         @Override
         public void onClick(View v) {
-            if (viewHolderListaProdutosSelecionada != null) {
-                viewHolderListaProdutosSelecionada.desSeleciona();
+            if (viewHolderCategoriaSelecionada != null) {
+                viewHolderCategoriaSelecionada.desSeleciona();
             }
 
-            viewHolderListaProdutosSelecionada = this;
+            viewHolderCategoriaSelecionada = this;
 
-            ((Produtos) context).atualizaOpcoesMenu();
+            ((Categoria) context).atualizaOpcoesMenu();
 
             seleciona();
         }

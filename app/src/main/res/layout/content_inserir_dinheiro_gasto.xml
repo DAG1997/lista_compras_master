@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".inserir_dinheiro_gasto"
+    tools:context=".Inserir_alterar_eliminar.inserir_dinheiro_gasto"
     tools:showIn="@layout/activity_inserir_dinheiro_gasto">
 
     <com.google.android.material.textfield.TextInputLayout

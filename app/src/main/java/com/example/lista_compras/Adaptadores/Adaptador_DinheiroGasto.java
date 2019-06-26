@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Adaptadores;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -11,11 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Adaptador_Categorias extends RecyclerView.Adapter<Adaptador_Categorias.ViewHolderCategorias> {
+import com.example.lista_compras.ClassesBd.DinheiroGasto;
+import com.example.lista_compras.Main_Recyclers.Dinheiro_gasto;
+import com.example.lista_compras.R;
+
+public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_DinheiroGasto.ViewHolderDinheiroGasto> {
     private Cursor cursor;
     private Context context;
 
-    public Adaptador_Categorias(Context context) {
+    public Adaptador_DinheiroGasto(Context context) {
         this.context = context;
     }
 
@@ -48,10 +52,10 @@ public class Adaptador_Categorias extends RecyclerView.Adapter<Adaptador_Categor
      */
     @NonNull
     @Override
-    public ViewHolderCategorias onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemCategorias = LayoutInflater.from(context).inflate(R.layout.item_compras_efetuadas, parent, false);
+    public ViewHolderDinheiroGasto onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemMontante_Gasto = LayoutInflater.from(context).inflate(R.layout.item_dinheiro_gasto, parent, false);
 
-        return new ViewHolderCategorias(itemCategorias);
+        return new ViewHolderDinheiroGasto(itemMontante_Gasto);
     }
 
     /**
@@ -75,10 +79,10 @@ public class Adaptador_Categorias extends RecyclerView.Adapter<Adaptador_Categor
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderCategorias holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderDinheiroGasto holder, int position) {
         cursor.moveToPosition(position);
-        Categorias categorias = Categorias.fromCursor(cursor);
-        holder.setCategorias(categorias);
+        DinheiroGasto dinheiroGasto = DinheiroGasto.fromCursor(cursor);
+        holder.setDinheiroGasto(dinheiroGasto);
     }
 
     /**
@@ -93,35 +97,34 @@ public class Adaptador_Categorias extends RecyclerView.Adapter<Adaptador_Categor
         return cursor.getCount();
     }
 
-    public Categorias getCategoriaSelecionada() {
-        if (viewHolderCategoriaSelecionada == null) return null;
+    public DinheiroGasto getDinheiroGastoSelecionado() {
+        if (viewHolderDinheiroGastoSelecionado == null) return null;
 
-        return viewHolderCategoriaSelecionada.categorias;
+        return viewHolderDinheiroGastoSelecionado.dinheiroGasto;
     }
 
-    private static ViewHolderCategorias viewHolderCategoriaSelecionada = null;
+    private static ViewHolderDinheiroGasto viewHolderDinheiroGastoSelecionado = null;
 
-    public class ViewHolderCategorias extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView textViewNome_da_categoria;
-        private TextView textViewTipo_de_produto;
+    public class ViewHolderDinheiroGasto extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView textViewMontanteGasto;
 
 
-        private Categorias categorias;
+        private DinheiroGasto dinheiroGasto;
 
-        public ViewHolderCategorias(@NonNull View itemView) {
+        public ViewHolderDinheiroGasto(@NonNull View itemView) {
             super(itemView);
 
-            textViewNome_da_categoria = (TextView)itemView.findViewById(R.id.textViewQuantidade);
-            textViewTipo_de_produto = (TextView) itemView.findViewById(R.id.textViewTipo_de_produto);
+            textViewMontanteGasto = (TextView)itemView.findViewById(R.id.textViewMontanteGasto);
 
             itemView.setOnClickListener(this);
         }
 
-        public void setCategorias(Categorias categorias) {
-            this.categorias = categorias;
 
-            textViewNome_da_categoria.setText(categorias.getNome_da_categoria());
-            textViewTipo_de_produto.setText(categorias.getTipo_de_produto());
+
+        public void setDinheiroGasto(DinheiroGasto dinheiroGasto) {
+            this.dinheiroGasto = dinheiroGasto;
+
+            textViewMontanteGasto.setText(dinheiroGasto.getMontante_gasto());
 
         }
 
@@ -132,13 +135,13 @@ public class Adaptador_Categorias extends RecyclerView.Adapter<Adaptador_Categor
          */
         @Override
         public void onClick(View v) {
-            if (viewHolderCategoriaSelecionada != null) {
-                viewHolderCategoriaSelecionada.desSeleciona();
+            if (viewHolderDinheiroGastoSelecionado != null) {
+                viewHolderDinheiroGastoSelecionado.desSeleciona();
             }
 
-            viewHolderCategoriaSelecionada = this;
+            viewHolderDinheiroGastoSelecionado = this;
 
-            ((Categoria) context).atualizaOpcoesMenu();
+            ((Dinheiro_gasto) context).atualizaOpcoesMenu();
 
             seleciona();
         }
@@ -152,3 +155,4 @@ public class Adaptador_Categorias extends RecyclerView.Adapter<Adaptador_Categor
         }
     }
 }
+

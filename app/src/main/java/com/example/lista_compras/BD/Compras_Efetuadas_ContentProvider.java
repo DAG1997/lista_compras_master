@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.BD;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -14,7 +14,12 @@ import androidx.annotation.Nullable;
 
 import androidx.annotation.NonNull;
 
-import static com.example.lista_compras.BdTableCategorias.*;
+import com.example.lista_compras.BD.BdListaComprasOpenHelper;
+import com.example.lista_compras.BD.BdTableCategorias;
+import com.example.lista_compras.BD.BdTableDinheiroGasto;
+import com.example.lista_compras.BD.BdTableListaProdutos;
+
+import static com.example.lista_compras.BD.BdTableCategorias.*;
 
 public class Compras_Efetuadas_ContentProvider extends ContentProvider {
     public static final String AUTHORITY = "com.example.lista_compras";

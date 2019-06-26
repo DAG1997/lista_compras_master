@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Main_Recyclers;
 import android.content.Intent;
 import android.database.Cursor;
 import androidx.annotation.NonNull;
@@ -12,7 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+
+import com.example.lista_compras.Adaptadores.Adaptador_Lista_Compras;
+import com.example.lista_compras.BD.BdTableListaProdutos;
+import com.example.lista_compras.BD.Compras_Efetuadas_ContentProvider;
+import com.example.lista_compras.ClassesBd.ListaProdutos;
+import com.example.lista_compras.Inserir_alterar_eliminar.Inserir_lista_produtos;
+import com.example.lista_compras.R;
+import com.example.lista_compras.Inserir_alterar_eliminar.alterar_lista_produtos;
+import com.example.lista_compras.Inserir_alterar_eliminar.eliminar_lista_produtos;
 
 
 public class Produtos extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor>{

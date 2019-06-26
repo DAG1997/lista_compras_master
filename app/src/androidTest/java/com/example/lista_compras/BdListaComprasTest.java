@@ -6,10 +6,17 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
 
+import com.example.lista_compras.BD.BdListaComprasOpenHelper;
+import com.example.lista_compras.BD.BdTableCategorias;
+import com.example.lista_compras.BD.BdTableDinheiroGasto;
+import com.example.lista_compras.BD.BdTableListaProdutos;
+import com.example.lista_compras.ClassesBd.Categorias;
+import com.example.lista_compras.ClassesBd.DinheiroGasto;
+import com.example.lista_compras.ClassesBd.ListaProdutos;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
@@ -41,6 +48,7 @@ public class BdListaComprasTest {
         assertTrue(db.isOpen());
     }
 
+    @SuppressWarnings("deprecation")
     private Context getAppContext() {
         return InstrumentationRegistry.getTargetContext();
     }

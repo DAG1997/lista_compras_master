@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Inserir_lista_produtos"
+    tools:context=".Inserir_alterar_eliminar.Inserir_lista_produtos"
     tools:showIn="@layout/activity_inserir_lista_produtos">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -21,27 +21,47 @@
             android:hint="@string/introduzir_nome_do_produtos" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <Spinner
+        android:id="@+id/spinnerCategoria"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="@string/introduzir_categoria"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#9900BCD4"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNome_do_produto" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
         android:textColorHint="#F44336">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="359dp"
+            android:layout_height="wrap_content"
             android:textColorHint="#F44336">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextAlterar_Montante_gasto"
+                android:id="@+id/editTextCategoria"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="@string/introduzir_categoria" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextAlterarDia"
+            android:id="@+id/editTextQuantidade"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:hint="@string/introduzir_quantidades" />
     </com.google.android.material.textfield.TextInputLayout>
 

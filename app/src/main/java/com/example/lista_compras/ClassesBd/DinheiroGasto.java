@@ -1,9 +1,11 @@
-package com.example.lista_compras;
+package com.example.lista_compras.ClassesBd;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 
-    public class DinheiroGasto {
+import com.example.lista_compras.BD.BdTableDinheiroGasto;
+
+public class DinheiroGasto {
         private long id;
         private String dia;
         private int montante_gasto;

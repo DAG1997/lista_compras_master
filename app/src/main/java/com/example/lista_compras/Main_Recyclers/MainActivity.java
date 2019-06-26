@@ -1,25 +1,17 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Main_Recyclers;
 
-import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CursorAdapter;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.lista_compras.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn = (Button) findViewById(R.id.button);
+        Button btn = (Button) findViewById(R.id.Categorias);
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        Button btn2 = (Button) findViewById(R.id.button2);
+        Button btn2 = (Button) findViewById(R.id.ListaProdutos);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn3 = (Button) findViewById(R.id.button3);
+        Button btn3 = (Button) findViewById(R.id.DinheiroGasto);
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

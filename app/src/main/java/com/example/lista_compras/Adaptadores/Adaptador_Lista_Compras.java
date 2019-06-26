@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Adaptadores;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -11,11 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_DinheiroGasto.ViewHolderDinheiroGasto> {
+import com.example.lista_compras.ClassesBd.ListaProdutos;
+import com.example.lista_compras.Main_Recyclers.Produtos;
+import com.example.lista_compras.R;
+
+public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_Lista_Compras.ViewHolderListaProdutos> {
     private Cursor cursor;
     private Context context;
 
-    public Adaptador_DinheiroGasto(Context context) {
+    public Adaptador_Lista_Compras(Context context) {
         this.context = context;
     }
 
@@ -48,10 +52,10 @@ public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_Dinh
      */
     @NonNull
     @Override
-    public ViewHolderDinheiroGasto onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemMontante_Gasto = LayoutInflater.from(context).inflate(R.layout.item_dinheiro_gasto, parent, false);
+    public ViewHolderListaProdutos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemLista_Produtos = LayoutInflater.from(context).inflate(R.layout.item_lista_produtos, parent, false);
 
-        return new ViewHolderDinheiroGasto(itemMontante_Gasto);
+        return new ViewHolderListaProdutos(itemLista_Produtos);
     }
 
     /**
@@ -75,10 +79,10 @@ public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_Dinh
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderDinheiroGasto holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderListaProdutos holder, int position) {
         cursor.moveToPosition(position);
-        DinheiroGasto dinheiroGasto = DinheiroGasto.fromCursor(cursor);
-        holder.setDinheiroGasto(dinheiroGasto);
+        ListaProdutos listaProdutos = ListaProdutos.fromCursor(cursor);
+        holder.setListaProdutos(listaProdutos);
     }
 
     /**
@@ -93,34 +97,38 @@ public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_Dinh
         return cursor.getCount();
     }
 
-    public DinheiroGasto getDinheiroGastoSelecionado() {
-        if (viewHolderDinheiroGastoSelecionado == null) return null;
+    public ListaProdutos getListaProdutosSelecionada() {
+        if (viewHolderListaProdutosSelecionada == null) return null;
 
-        return viewHolderDinheiroGastoSelecionado.dinheiroGasto;
+        return viewHolderListaProdutosSelecionada.listaProdutos;
     }
 
-    private static ViewHolderDinheiroGasto viewHolderDinheiroGastoSelecionado = null;
+    private static ViewHolderListaProdutos viewHolderListaProdutosSelecionada = null;
 
-    public class ViewHolderDinheiroGasto extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView textViewMontanteGasto;
+    public class ViewHolderListaProdutos extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView textViewNome_produto;
+        private TextView textViewQuantidade;
+        private TextView textViewCategoria;
 
 
-        private DinheiroGasto dinheiroGasto;
+        private ListaProdutos listaProdutos;
 
-        public ViewHolderDinheiroGasto(@NonNull View itemView) {
+        public ViewHolderListaProdutos(@NonNull View itemView) {
             super(itemView);
 
-            textViewMontanteGasto = (TextView)itemView.findViewById(R.id.textViewMontanteGasto);
+            textViewNome_produto = (TextView)itemView.findViewById(R.id.textViewNome_produto);
+            textViewQuantidade = (TextView)itemView.findViewById(R.id.textViewQuantidade);
+            textViewCategoria = (TextView)itemView.findViewById(R.id.textViewCategoria);
 
             itemView.setOnClickListener(this);
         }
 
+        public void setListaProdutos(ListaProdutos listaProdutos) {
+            this.listaProdutos = listaProdutos;
 
-
-        public void setDinheiroGasto(DinheiroGasto dinheiroGasto) {
-            this.dinheiroGasto = dinheiroGasto;
-
-            textViewMontanteGasto.setText(dinheiroGasto.getMontante_gasto());
+            textViewNome_produto.setText(listaProdutos.getNome_do_produto());
+            textViewQuantidade.setText(listaProdutos.getQuantidade());
+            textViewCategoria.setText(listaProdutos.getCategoria());
 
         }
 
@@ -131,13 +139,13 @@ public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_Dinh
          */
         @Override
         public void onClick(View v) {
-            if (viewHolderDinheiroGastoSelecionado != null) {
-                viewHolderDinheiroGastoSelecionado.desSeleciona();
+            if (viewHolderListaProdutosSelecionada != null) {
+                viewHolderListaProdutosSelecionada.desSeleciona();
             }
 
-            viewHolderDinheiroGastoSelecionado = this;
+            viewHolderListaProdutosSelecionada = this;
 
-            ((Dinheiro_gasto) context).atualizaOpcoesMenu();
+            ((Produtos) context).atualizaOpcoesMenu();
 
             seleciona();
         }
@@ -151,4 +159,3 @@ public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_Dinh
         }
     }
 }
-

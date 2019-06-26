@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".alterar_lista_produtos"
+    tools:context=".Inserir_alterar_eliminar.alterar_lista_produtos"
     tools:showIn="@layout/activity_alterar_lista_produtos">
 
     <com.google.android.material.textfield.TextInputLayout

@@ -1,4 +1,4 @@
-package com.example.lista_compras;
+package com.example.lista_compras.Main_Recyclers;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,8 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.example.lista_compras.Adaptadores.Adaptador_Categorias;
+import com.example.lista_compras.BD.BdTableCategorias;
+import com.example.lista_compras.BD.Compras_Efetuadas_ContentProvider;
+import com.example.lista_compras.ClassesBd.Categorias;
+import com.example.lista_compras.R;
+import com.example.lista_compras.Inserir_alterar_eliminar.alterar_compras_efetuadas;
+import com.example.lista_compras.Inserir_alterar_eliminar.eliminar_compras_efetuadas;
+import com.example.lista_compras.Inserir_alterar_eliminar.inserir_compras_efetuadas;
 
 
 public class Categoria extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor>{
