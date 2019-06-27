@@ -98,7 +98,7 @@ public class Adaptador_Lista_Compras extends RecyclerView.Adapter<Adaptador_List
 
             textViewNome_produto.setText(listaProdutos.getNome_do_produto());
             textViewQuantidade.setText(String.valueOf(listaProdutos.getQuantidade()));
-            textViewCategoria.setText(listaProdutos.getNomeCategoria());
+            textViewCategoria.setText(String.valueOf(listaProdutos.getNomeCategoria()));
 
         }
 

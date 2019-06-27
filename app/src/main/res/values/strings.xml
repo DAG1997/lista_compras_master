@@ -41,33 +41,33 @@
     <string name="inserir_montante_gasto">Insert Money Spent</string>
     <string name="lista_de_compras">Shopping List</string>
     <string name="introduzir_nome_do_produtos">Introduzir Nome do Produto</string>
-    <string name="introduzir_nome_da_categoria">Introduzir Nome da Categoria</string>
     <string name="introduzir_tipo_de_produto">Introduzir Tipo de produto</string>
     <string name="nome_da_categoria">Nome_da_categoria</string>
     <string name="tipo_de_produto">Tipo_de_produto</string>
-    <string name="cereais_e_derivados">Cereais e derivados</string>
+    <string name="cereais_e_derivados">Cereals e derivatives</string>
     <string name="iogurtes">Iogurtes</string>
     <string name="nome_do_produto">Name of product</string>
     <string name="azeite">Azeite</string>
     <string name="quantidade">Quantidade</string>
     <string name="_2">2</string>
     <string name="leos_azeites_e_outros">Òleos, azeites e outros</string>
-    <string name="adicionar">Adicionar</string>
-    <string name="editar">Editar</string>
+    <string name="adicionar">Insert</string>
+    <string name="editar">Edit</string>
     <string name="eliminars">Eliminar</string>
     <string name="eliminarz">Eliminar</string>
     <string name="cancelare">Cancelar</string>
     <string name="guardare">Guardar</string>
-    <string name="introduzir_montante_gasto">Introduzir montante gasto</string>
-    <string name="introduzir_dia_da_semana">Introduzir dia da semana</string>
-    <string name="dia_da_semana">Dia da semana</string>
+    <string name="introduzir_montante_gasto">Insert Money Spent</string>
+    <string name="dia_da_semana">Day of the week</string>
     <string name="quarta_feira">Quarta-feira</string>
     <string name="montante_gasto">Montante gasto</string>
     <string name="_32">32</string>
     <string name="lista_produtos">Lista Produtos</string>
     <string name="introduzir_quantidades">Insert Quantity</string>
-    <string name="introduzir_categoria">categoria</string>
+    <string name="introduzir_categoria">category</string>
     <string name="sair">Sair</string>
+    <string name="introduzir_dia_da_semana">Insert day of the week</string>
+    <string name="introduzir_nome_da_categoria">Insert Name of the category</string>
 
 
 </resources>

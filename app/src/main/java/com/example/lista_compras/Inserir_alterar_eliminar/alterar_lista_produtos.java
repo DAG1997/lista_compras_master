@@ -30,13 +30,13 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
     private EditText editTextNome_do_produto;
     private EditText editTextQuantidade;
-    private EditText editTextCategoria;
+   // private EditText editTextCategoria;
     private Spinner spinnerCategoria;
 
     private ListaProdutos listaProdutos = null;
 
-    private boolean categoriasCarregadas = false;
-    private boolean categoriaAtualizada = false;
+    //private boolean categoriasCarregadas = false;
+    //private boolean categoriaAtualizada = false;
 
     private Uri enderecoListaProdutosEditar;
 
@@ -50,7 +50,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
         editTextNome_do_produto = (EditText) findViewById(R.id.editTextAlterar_nome_do_produto_);
         editTextQuantidade = (EditText) findViewById(R.id.editTextAlterar_quantidade);
-        editTextCategoria = (EditText) findViewById(R.id.editTextAlterar_nome_da_categoria) ;
+        //editTextCategoria = (EditText) findViewById(R.id.editTextAlterar_nome_da_categoria) ;
         spinnerCategoria = findViewById(R.id.spinnerCategorias);
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTA_PRODUTOS, null, this);
@@ -80,27 +80,27 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
         editTextNome_do_produto.setText(listaProdutos.getNome_do_produto());
         editTextQuantidade.setText(String.valueOf(listaProdutos.getQuantidade()));
-        editTextCategoria.setText(String.valueOf(listaProdutos.getCategoria()));
+        //editTextCategoria.setText(String.valueOf(listaProdutos.getCategoria()));
         /*editTextCategoria.setText(listaProdutos.getCategoria());*/
 
-        atualizaCategoriaSelecionada();
+        //atualizaCategoriaSelecionada();
 
 
     }
 
-    private void atualizaCategoriaSelecionada() {
+    /*private void atualizaCategoriaSelecionada() {
         if(!categoriasCarregadas) return;
         if(categoriaAtualizada) return;
 
         for (int i = 0; i < spinnerCategoria.getCount(); i++){
-            if(spinnerCategoria.getItemIdAtPosition(i) == listaProdutos.getId()){
+            if(spinnerCategoria.getItemIdAtPosition(i) == listaProdutos.getCategoria()){
                 spinnerCategoria.setSelection(i);
                 break;
             }
         }
 
         categoriaAtualizada = true;
-    }
+    }*/
 
     @Override
     protected void onResume() {
@@ -179,12 +179,12 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
             return;
         }*/
 
-        long idCategorias = spinnerCategoria.getSelectedItemId();
+        //long idCategorias = spinnerCategoria.getSelectedItemId();
 
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
         /*listaProdutos.setCategoria(categoria);*/
-        listaProdutos.setCategoria(idCategorias);
+        //listaProdutos.setCategoria(idCategorias);
 
         try {
             getContentResolver().update(enderecoListaProdutosEditar, listaProdutos.getContentValues(), null, null);
@@ -213,16 +213,16 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         //mostraCategoriaSpinner(data);
-        categoriasCarregadas = true;
-        atualizaCategoriaSelecionada();
+        //categoriasCarregadas = true;
+        //atualizaCategoriaSelecionada();
 
 
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        categoriasCarregadas = false;
-        categoriaAtualizada = false;
+        //categoriasCarregadas = false;
+        //categoriaAtualizada = false;
         //mostraCategoriaSpinner(null);
 
     }
