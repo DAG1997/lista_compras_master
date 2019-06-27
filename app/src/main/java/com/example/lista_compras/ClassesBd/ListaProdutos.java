@@ -49,7 +49,7 @@ public class ListaProdutos {
         return categoria;
     }
 
-    public void setCategoria(Long categoria) {
+    public void setCategoria(long categoria) {
         this.categoria = categoria;
     }
 
@@ -82,7 +82,7 @@ public class ListaProdutos {
                 cursor.getColumnIndex(BdTableListaProdutos.CAMPO_CATEGORIA)
         );
 
-        long nomeCategoria = cursor.getLong(
+        String nomeCategoria = cursor.getString(
                 cursor.getColumnIndex(BdTableListaProdutos.ALIAS_NOME_CATEGORIA)
         );
 

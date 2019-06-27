@@ -29,6 +29,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
     private EditText editTextNome_do_produto;
     private EditText editTextQuantidade;
     private Spinner spinnerCategoria;
+    //private EditText editTextCategoria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +39,12 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editTextNome_do_produto = (EditText) findViewById(R.id.editTextNome_do_produto);
-        spinnerCategoria = findViewById(R.id.spinnerCategorias);
+        spinnerCategoria =(Spinner) findViewById(R.id.spinnerCategorias);
         editTextQuantidade = (EditText) findViewById(R.id.editTextQuantidade);
+        //editTextCategoria = (EditText) findViewById(R.id.editTextCategoria) ;
 
 
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTA_PRODUTOS, null, this);
+         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTA_PRODUTOS, null, this);
 
     }
 
@@ -53,7 +55,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
         super.onResume();
     }
 
-    private void mostraCategoriasSpinner(Cursor cursorCategorias) {
+    /*private void mostraCategoriasSpinner(Cursor cursorCategorias) {
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -62,7 +64,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
                 new int[]{android.R.id.text1}
         );
         spinnerCategoria.setAdapter(adaptador);
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -76,6 +78,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
 
         if (id == R.id.item_guardar) {
             guardar();
+
             return true;
         } else if (id == R.id.item_cancelar) {
             finish();
@@ -109,7 +112,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
             return;
         }
 
-        /*String categoria = editTextCategoria.getText().toString();
+        /*long categoria = editTextCategoria.getText().toString();
 
         if(categoria.trim().isEmpty()){
             editTextCategoria.setError("Preencha o espaço por favor!");
@@ -123,7 +126,8 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
 
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
-        listaProdutos.setNomeCategoria(idCategorias);
+        //listaProdutos.setCategoria(idCategorias);
+        listaProdutos.setCategoria(idCategorias);
 
 
         try {
@@ -151,13 +155,13 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        mostraCategoriasSpinner(data);
+       // mostraCategoriasSpinner(data);
 
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        mostraCategoriasSpinner(null);
+        //mostraCategoriasSpinner(null);
 
     }
 }

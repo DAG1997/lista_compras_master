@@ -30,6 +30,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
     private EditText editTextNome_do_produto;
     private EditText editTextQuantidade;
+    private EditText editTextCategoria;
     private Spinner spinnerCategoria;
 
     private ListaProdutos listaProdutos = null;
@@ -49,6 +50,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
         editTextNome_do_produto = (EditText) findViewById(R.id.editTextAlterar_nome_do_produto_);
         editTextQuantidade = (EditText) findViewById(R.id.editTextAlterar_quantidade);
+        editTextCategoria = (EditText) findViewById(R.id.editTextAlterar_nome_da_categoria) ;
         spinnerCategoria = findViewById(R.id.spinnerCategorias);
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTA_PRODUTOS, null, this);
@@ -78,6 +80,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
         editTextNome_do_produto.setText(listaProdutos.getNome_do_produto());
         editTextQuantidade.setText(String.valueOf(listaProdutos.getQuantidade()));
+        editTextCategoria.setText(String.valueOf(listaProdutos.getCategoria()));
         /*editTextCategoria.setText(listaProdutos.getCategoria());*/
 
         atualizaCategoriaSelecionada();
@@ -90,7 +93,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
         if(categoriaAtualizada) return;
 
         for (int i = 0; i < spinnerCategoria.getCount(); i++){
-            if(spinnerCategoria.getItemIdAtPosition(i) == listaProdutos.getCategoria()){
+            if(spinnerCategoria.getItemIdAtPosition(i) == listaProdutos.getId()){
                 spinnerCategoria.setSelection(i);
                 break;
             }
@@ -106,7 +109,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
         super.onResume();
     }
 
-    private void mostraCategoriaSpinner(Cursor cursorCategorias) {
+    /*private void mostraCategoriaSpinner(Cursor cursorCategorias) {
         SimpleCursorAdapter adaptadorCategorias = new SimpleCursorAdapter(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -115,7 +118,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
                 new int[]{android.R.id.text1}
         );
         spinnerCategoria.setAdapter(adaptadorCategorias);
-    }
+    }*/
 
 
     @Override
@@ -152,6 +155,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
             return;
         }
 
+
         int quantidade;
 
         String strQuantidade = editTextQuantidade.getText().toString();
@@ -168,12 +172,19 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
             return;
         }
 
+        /*long categoria = editTextCategoria.getText().toString();
+
+        if(categoria.trim().isEmpty()){
+            editTextCategoria.setError("Preencha o espaço vazio por favor!");
+            return;
+        }*/
+
         long idCategorias = spinnerCategoria.getSelectedItemId();
 
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
-        listaProdutos.setNomeCategoria(idCategorias);
         /*listaProdutos.setCategoria(categoria);*/
+        listaProdutos.setCategoria(idCategorias);
 
         try {
             getContentResolver().update(enderecoListaProdutosEditar, listaProdutos.getContentValues(), null, null);
@@ -201,7 +212,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        mostraCategoriaSpinner(data);
+        //mostraCategoriaSpinner(data);
         categoriasCarregadas = true;
         atualizaCategoriaSelecionada();
 
@@ -212,7 +223,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         categoriasCarregadas = false;
         categoriaAtualizada = false;
-        mostraCategoriaSpinner(null);
+        //mostraCategoriaSpinner(null);
 
     }
 }

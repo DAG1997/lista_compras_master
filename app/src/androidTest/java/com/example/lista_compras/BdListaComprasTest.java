@@ -148,10 +148,10 @@ public class BdListaComprasTest {
         // Teste create/read lista produtos (CRud)
         String nome_do_produto = "Febras";
         int quantidade  = 5;
-        long categoria = idMercearia;
 
 
-        id = criaListaProdutos(tabelaListaProdutos,nome_do_produto, quantidade, categoria);
+
+        id = criaListaProdutos(tabelaListaProdutos,nome_do_produto, quantidade,idMercearia);
         cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
         assertEquals(1, cursorListaProdutos.getCount());
 
@@ -161,14 +161,13 @@ public class BdListaComprasTest {
 
         assertEquals(nome_do_produto,  listaProdutos.getNome_do_produto());
         assertEquals(quantidade,  listaProdutos.getQuantidade());
-        assertEquals(categoria,  listaProdutos.getCategoria());
+        assertEquals(idMercearia,  listaProdutos.getCategoria());
 
 
 
         nome_do_produto = "Bananas ";
         quantidade = 4;
-        categoria = idFrutasLegumes;
-        id = criaListaProdutos(tabelaListaProdutos, nome_do_produto, quantidade, categoria);
+        id = criaListaProdutos(tabelaListaProdutos, nome_do_produto, quantidade, idFrutasLegumes);
         cursorListaProdutos = getListaProdutos(tabelaListaProdutos);
         assertEquals(2, cursorListaProdutos.getCount());
 
@@ -176,7 +175,7 @@ public class BdListaComprasTest {
         listaProdutos = getListaProdutosComID(cursorListaProdutos, id);
         assertEquals(nome_do_produto,  listaProdutos.getNome_do_produto());
         assertEquals(quantidade,  listaProdutos.getQuantidade());
-        assertEquals(categoria,  listaProdutos.getCategoria());
+        assertEquals(idFrutasLegumes,  listaProdutos.getCategoria());
 
 
         // Teste read/update livros (cRUd)
@@ -184,12 +183,11 @@ public class BdListaComprasTest {
         /*listaProdutos = getListaProdutosComID(cursorListaProdutos, id);*/
         nome_do_produto = "Latas de atum";
         quantidade = 7;
-        categoria = idMercearia;
 
 
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
-        listaProdutos.setCategoria(categoria);
+        listaProdutos.setCategoria(idMercearia);
 
         tabelaListaProdutos.update(listaProdutos.getContentValues(), BdTableListaProdutos._ID + "=?", new String[]{String.valueOf(id)});
 
@@ -198,7 +196,7 @@ public class BdListaComprasTest {
         listaProdutos = getListaProdutosComID(cursorListaProdutos, id);
         assertEquals(nome_do_produto,  listaProdutos.getNome_do_produto());
         assertEquals(quantidade,  listaProdutos.getQuantidade());
-        assertEquals(categoria,  listaProdutos.getCategoria());
+        assertEquals(idMercearia,  listaProdutos.getCategoria());
 
 
 
@@ -335,7 +333,7 @@ public class BdListaComprasTest {
 
 
 
-    private long criaListaProdutos(BdTableListaProdutos tabelaListaProdutos, String nome_do_produto, int quantidade, Long categoria){
+    private long criaListaProdutos(BdTableListaProdutos tabelaListaProdutos, String nome_do_produto, int quantidade, long categoria){
         ListaProdutos lista_produtos = new ListaProdutos();
         lista_produtos.setNome_do_produto(nome_do_produto);
         lista_produtos.setQuantidade(quantidade);
