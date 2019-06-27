@@ -11,13 +11,13 @@ public class ListaProdutos {
     private String nome_do_produto;
     private int quantidade;
     private long categoria;
-    private long nomeCategoria;
+    private String nomeCategoria;
 
 
-    public long getNomeCategoria() {
+    public String getNomeCategoria() {
         return nomeCategoria;
     }
-    public void setNomeCategoria(long nomeCategoria) {
+    public void setNomeCategoria(String nomeCategoria) {
         this.nomeCategoria = nomeCategoria;
     }
 
