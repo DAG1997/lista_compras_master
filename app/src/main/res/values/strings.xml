@@ -55,7 +55,6 @@
     <string name="adicionar">Adicionar</string>
     <string name="editar">Editar</string>
     <string name="eliminars">Eliminar</string>
-    <string name="sair">Sair</string>
     <string name="eliminarz">Eliminar</string>
     <string name="cancelare">Cancelar</string>
     <string name="guardare">Guardar</string>
@@ -68,6 +67,7 @@
     <string name="lista_produtos">Lista Produtos</string>
     <string name="introduzir_quantidades">Insert Quantity</string>
     <string name="introduzir_categoria">categoria</string>
+    <string name="sair">Sair</string>
 
 
 </resources>

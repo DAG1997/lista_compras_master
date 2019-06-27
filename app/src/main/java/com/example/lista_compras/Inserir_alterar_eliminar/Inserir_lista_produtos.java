@@ -28,8 +28,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
 
     private EditText editTextNome_do_produto;
     private EditText editTextQuantidade;
-    private EditText editTextCategoria;
-    /*private Spinner spinnerCategoria;*/
+    private Spinner spinnerCategoria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +38,11 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editTextNome_do_produto = (EditText) findViewById(R.id.editTextNome_do_produto);
-        /*spinnerCategoria = findViewById(R.id.spinnerCategoria);*/
+        spinnerCategoria = findViewById(R.id.spinnerCategorias);
         editTextQuantidade = (EditText) findViewById(R.id.editTextQuantidade);
-        editTextCategoria = (EditText) findViewById(R.id.editTextCategoria);
+
+
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTA_PRODUTOS, null, this);
 
     }
 
@@ -52,16 +53,16 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
         super.onResume();
     }
 
-   /* private void mostraCategoriasSpinner(Cursor cursorCategorias) {
-        SimpleCursorAdapter adaptadorCategorias = new SimpleCursorAdapter(
+    private void mostraCategoriasSpinner(Cursor cursorCategorias) {
+        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(
                 this,
                 android.R.layout.simple_list_item_1,
                 cursorCategorias,
                 new String[]{BdTableCategorias.NOME_CATEGORIA},
                 new int[]{android.R.id.text1}
         );
-        spinnerCategoria.setAdapter(adaptadorCategorias);
-    }*/
+        spinnerCategoria.setAdapter(adaptador);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -94,7 +95,7 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
 
         int quantidade;
 
-        String strQuantidade = editTextNome_do_produto.getText().toString();
+        String strQuantidade = editTextQuantidade.getText().toString();
 
         if (strQuantidade.trim().isEmpty()){
             editTextQuantidade.setError("Preencha o espaço por favor!");
@@ -108,21 +109,21 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
             return;
         }
 
-        String categoria = editTextCategoria.getText().toString();
+        /*String categoria = editTextCategoria.getText().toString();
 
         if(categoria.trim().isEmpty()){
             editTextCategoria.setError("Preencha o espaço por favor!");
             return;
-        }
+        }*/
 
-        /*long idCategorias = spinnerCategoria.getSelectedItemId();*/
+        long idCategorias = spinnerCategoria.getSelectedItemId();
 
         ListaProdutos listaProdutos = new ListaProdutos();
 
 
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
-        /*listaProdutos.setCategoria(categoria);*/
+        listaProdutos.setNomeCategoria(idCategorias);
 
 
         try {
@@ -150,12 +151,13 @@ public class Inserir_lista_produtos extends AppCompatActivity implements LoaderM
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        /*mostraCategoriasSpinner(data);*/
+        mostraCategoriasSpinner(data);
 
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+        mostraCategoriasSpinner(null);
 
     }
 }

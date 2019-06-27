@@ -22,7 +22,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
-        android:id="@+id/spinnerCategoria"
+        android:id="@+id/spinnerCategorias"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -49,14 +49,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="359dp"
             android:layout_height="wrap_content"
-            android:textColorHint="#F44336">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCategoria"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:hint="@string/introduzir_categoria" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:textColorHint="#F44336"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextQuantidade"

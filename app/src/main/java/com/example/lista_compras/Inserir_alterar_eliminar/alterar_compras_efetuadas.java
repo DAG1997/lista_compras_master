@@ -61,7 +61,7 @@ public class alterar_compras_efetuadas extends AppCompatActivity implements Load
 
         enderecoCategoriasEditar = Uri.withAppendedPath(Compras_Efetuadas_ContentProvider.ENDERECO_CATEGORIAS, String.valueOf(idCategoria));
 
-        Cursor cursor = getContentResolver().query(enderecoCategoriasEditar, BdTableListaProdutos.TODAS_COLUNAS, null, null, null);
+        Cursor cursor = getContentResolver().query(enderecoCategoriasEditar, BdTableCategorias.TODAS_COLUNAS, null, null, null);
 
         if (!cursor.moveToNext()) {
             Toast.makeText(this, "Não foi possível reconhecer a categoria pretendida", Toast.LENGTH_LONG).show();

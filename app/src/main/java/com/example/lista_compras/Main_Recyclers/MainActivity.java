@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Lista com os produtos adquiridos", Toast.LENGTH_SHORT).show();
-                openBotaoCarregado();
+                openCompras_efetuadas();
             }
 
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Lista das categorias existentes", Toast.LENGTH_SHORT).show();
-                openCompras_efetuadas();
+                openBotaoCarregado();
             }
         });
 

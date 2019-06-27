@@ -11,16 +11,15 @@ public class ListaProdutos {
     private String nome_do_produto;
     private int quantidade;
     private long categoria;
-    //private String nomeCategoria;
+    private long nomeCategoria;
 
 
-    /*public String getNomeCategoria() {
+    public long getNomeCategoria() {
         return nomeCategoria;
-    }*/
-
-   /* public void setNomeCategoria(String nomeCategoria) {
+    }
+    public void setNomeCategoria(long nomeCategoria) {
         this.nomeCategoria = nomeCategoria;
-    }*/
+    }
 
     public long getId() {
         return id;
@@ -83,9 +82,9 @@ public class ListaProdutos {
                 cursor.getColumnIndex(BdTableListaProdutos.CAMPO_CATEGORIA)
         );
 
-        /*String nomeCategoria = cursor.getString(
+        long nomeCategoria = cursor.getLong(
                 cursor.getColumnIndex(BdTableListaProdutos.ALIAS_NOME_CATEGORIA)
-        );*/
+        );
 
 
         ListaProdutos listaProdutos = new ListaProdutos();
@@ -94,7 +93,7 @@ public class ListaProdutos {
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
         listaProdutos.setCategoria(categoria);
-        //listaProdutos.setNomeCategoria(nomeCategoria);
+        listaProdutos.nomeCategoria= nomeCategoria;
 
 
         return listaProdutos;

@@ -23,7 +23,7 @@ import static com.example.lista_compras.BD.BdTableCategorias.*;
 
 public class Compras_Efetuadas_ContentProvider extends ContentProvider {
     public static final String AUTHORITY = "com.example.lista_compras";
-    public static final String CATEGORIAS = "nomes das categorias";
+    public static final String CATEGORIAS = "categorias";
     public static final String DINHEIROGASTO = "dinheiro";
     public static final String LISTAPRODUTOS = "produtos";
 
@@ -167,7 +167,7 @@ public class Compras_Efetuadas_ContentProvider extends ContentProvider {
                 return new BdTableCategorias(bd).query(projection, selection, selectionArgs, null, null, sortOrder);
 
             case URI_CATEGORIA_ESPECIFICA:
-                return new BdTableCategorias(bd).query(projection, _ID + "=?", new String[]{id}, null, null, null);
+                return new BdTableCategorias(bd).query(projection, BdTableCategorias._ID + "=?", new String[] { id }, null, null, null);
 
             case URI_DINHEIROGASTO:
                 return new BdTableDinheiroGasto(bd).query(projection, selection, selectionArgs, null, null, sortOrder);
@@ -183,7 +183,6 @@ public class Compras_Efetuadas_ContentProvider extends ContentProvider {
 
 
             default:
-
                 throw new UnsupportedOperationException("URI inválida(QUERY): " + uri.toString());
 
 
@@ -320,7 +319,7 @@ public class Compras_Efetuadas_ContentProvider extends ContentProvider {
                 return new BdTableListaProdutos(bd).delete( BdTableListaProdutos._ID + "=?", new String[]{id});
 
             default:
-                throw new UnsupportedOperationException("URI inválida(UPDATE):" + uri.toString());
+                throw new UnsupportedOperationException("URI inválida(DELETE):" + uri.toString());
         }
 
 

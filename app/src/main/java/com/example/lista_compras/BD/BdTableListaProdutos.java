@@ -44,14 +44,14 @@ public class BdTableListaProdutos implements BaseColumns {
         String colunasSelect = TextUtils.join(",", columns);
 
         String sql = "SELECT " + colunasSelect + " FROM " +
-                NOME_TABELA + " INNER JOIN " + BdTableCategorias.NOME_TABELA + " WHERE " + NOME_TABELA + "." + CAMPO_CATEGORIA + "=" + BdTableCategorias.NOME_TABELA + "." + BdTableCategorias._ID
+                NOME_TABELA + " INNER JOIN " + BdTableCategorias.NOME_TABELA + " WHERE " + NOME_TABELA + "." + CAMPO_CATEGORIA + " = " + BdTableCategorias.NOME_TABELA + "." + BdTableCategorias._ID
                 ;
 
         if (selection != null) {
             sql += " AND " + selection;
         }
 
-        Log.d("Tabela Livros", "query: " + sql);
+        Log.d("Tabela ListaProdutos", "query: " + sql);
 
         return db.rawQuery(sql, selectionArgs);
     }

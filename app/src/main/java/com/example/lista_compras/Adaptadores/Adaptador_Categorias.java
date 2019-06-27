@@ -103,7 +103,7 @@ public class Adaptador_Categorias extends RecyclerView.Adapter<Adaptador_Categor
         return viewHolderCategoriaSelecionada.categorias;
     }
 
-    private static ViewHolderCategorias viewHolderCategoriaSelecionada = null;
+    private ViewHolderCategorias viewHolderCategoriaSelecionada = null;
 
     public class ViewHolderCategorias extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textViewNome_da_categoria;

@@ -107,6 +107,7 @@ public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_Dinh
 
     public class ViewHolderDinheiroGasto extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textViewMontanteGasto;
+        private TextView textViewDia;
 
 
         private DinheiroGasto dinheiroGasto;
@@ -115,6 +116,7 @@ public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_Dinh
             super(itemView);
 
             textViewMontanteGasto = (TextView)itemView.findViewById(R.id.textViewMontanteGasto);
+            textViewDia = (TextView)itemView.findViewById(R.id.textViewDia) ;
 
             itemView.setOnClickListener(this);
         }
@@ -124,7 +126,8 @@ public class Adaptador_DinheiroGasto extends RecyclerView.Adapter<Adaptador_Dinh
         public void setDinheiroGasto(DinheiroGasto dinheiroGasto) {
             this.dinheiroGasto = dinheiroGasto;
 
-            textViewMontanteGasto.setText(dinheiroGasto.getMontante_gasto());
+            textViewMontanteGasto.setText(String.valueOf(dinheiroGasto.getMontante_gasto()));
+            textViewDia.setText(dinheiroGasto.getDia());
 
         }
 

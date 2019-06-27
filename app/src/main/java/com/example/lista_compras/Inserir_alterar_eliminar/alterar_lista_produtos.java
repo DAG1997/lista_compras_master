@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 
+import com.example.lista_compras.BD.BdTableCategorias;
 import com.example.lista_compras.BD.BdTableListaProdutos;
 import com.example.lista_compras.BD.Compras_Efetuadas_ContentProvider;
 import com.example.lista_compras.ClassesBd.ListaProdutos;
@@ -27,9 +30,12 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
     private EditText editTextNome_do_produto;
     private EditText editTextQuantidade;
-    private EditText editTextCategoria;
+    private Spinner spinnerCategoria;
 
     private ListaProdutos listaProdutos = null;
+
+    private boolean categoriasCarregadas = false;
+    private boolean categoriaAtualizada = false;
 
     private Uri enderecoListaProdutosEditar;
 
@@ -43,7 +49,7 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
         editTextNome_do_produto = (EditText) findViewById(R.id.editTextAlterar_nome_do_produto_);
         editTextQuantidade = (EditText) findViewById(R.id.editTextAlterar_quantidade);
-        editTextCategoria = (EditText) findViewById(R.id.editTextAlterar_categoria);
+        spinnerCategoria = findViewById(R.id.spinnerCategorias);
 
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LISTA_PRODUTOS, null, this);
 
@@ -74,8 +80,43 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
         editTextQuantidade.setText(String.valueOf(listaProdutos.getQuantidade()));
         /*editTextCategoria.setText(listaProdutos.getCategoria());*/
 
+        atualizaCategoriaSelecionada();
+
 
     }
+
+    private void atualizaCategoriaSelecionada() {
+        if(!categoriasCarregadas) return;
+        if(categoriaAtualizada) return;
+
+        for (int i = 0; i < spinnerCategoria.getCount(); i++){
+            if(spinnerCategoria.getItemIdAtPosition(i) == listaProdutos.getCategoria()){
+                spinnerCategoria.setSelection(i);
+                break;
+            }
+        }
+
+        categoriaAtualizada = true;
+    }
+
+    @Override
+    protected void onResume() {
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_LISTA_PRODUTOS, null, this);
+
+        super.onResume();
+    }
+
+    private void mostraCategoriaSpinner(Cursor cursorCategorias) {
+        SimpleCursorAdapter adaptadorCategorias = new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                cursorCategorias,
+                new String[]{BdTableCategorias.NOME_CATEGORIA},
+                new int[]{android.R.id.text1}
+        );
+        spinnerCategoria.setAdapter(adaptadorCategorias);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -127,15 +168,11 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
             return;
         }
 
-        String categoria = editTextCategoria.getText().toString();
-
-        if(categoria.trim().isEmpty()){
-            editTextCategoria.setError("Preencha o espaço vazio por favor!");
-            return;
-        }
+        long idCategorias = spinnerCategoria.getSelectedItemId();
 
         listaProdutos.setNome_do_produto(nome_do_produto);
         listaProdutos.setQuantidade(quantidade);
+        listaProdutos.setNomeCategoria(idCategorias);
         /*listaProdutos.setCategoria(categoria);*/
 
         try {
@@ -164,12 +201,18 @@ public class alterar_lista_produtos extends AppCompatActivity implements LoaderM
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
+        mostraCategoriaSpinner(data);
+        categoriasCarregadas = true;
+        atualizaCategoriaSelecionada();
 
 
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+        categoriasCarregadas = false;
+        categoriaAtualizada = false;
+        mostraCategoriaSpinner(null);
 
     }
 }
